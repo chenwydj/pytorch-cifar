@@ -72,6 +72,8 @@ if args.seed is None:
     args.seed = random.randint(0, 999)
 prepare_seed(args.seed)
 
+PID = os.getpid()
+print("<< ============== PID = %d ============== >>"%(PID))
 
 def main():
     global args, best_acc
