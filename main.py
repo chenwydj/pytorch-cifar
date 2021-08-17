@@ -20,7 +20,6 @@ import torch.nn.functional as F
 # import torchvision.models as models
 import torch.backends.cudnn as cudnn
 import torchvision.transforms as transforms
-import torchvision.datasets as datasets
 
 # from models import model_dict
 import cifar10_models as models

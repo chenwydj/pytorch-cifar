@@ -18,13 +18,13 @@ general_test_transform = transforms.Compose([
 ])
 
 
-def get_svhn_test_loader(path="/ssd1/chenwy", batch_size=64, num_workers=2):
+def get_svhn_test_loader(path="/ssd1/chenwy/dataset", batch_size=64, num_workers=2):
     test_data = SVHN(root=path, split='test', download=True, transform=general_test_transform)
     test_queue_svhn = torch.utils.data.DataLoader(test_data, batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=num_workers)
     return test_queue_svhn
 
 
-def get_cifar_test_loader(path="/ssd1/chenwy", batch_size=64, num_workers=2):
+def get_cifar_test_loader(path="/ssd1/chenwy/dataset", batch_size=64, num_workers=2):
     test_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(CIFAR_MEAN, CIFAR_STD),
@@ -34,7 +34,7 @@ def get_cifar_test_loader(path="/ssd1/chenwy", batch_size=64, num_workers=2):
     return test_queue_cifar10
 
 
-def svhn_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2):
+def svhn_dataloaders(batch_size=128, data_dir='/ssd1/chenwy/dataset', num_workers=2):
 
     train_transform = transforms.Compose([
         transforms.RandomCrop([32, 32]),
@@ -63,7 +63,7 @@ def svhn_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2):
     return train_loader, val_loader, test_loader
 
 
-def cifar10_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2):
+def cifar10_dataloaders(batch_size=128, data_dir='/ssd1/chenwy/dataset', num_workers=2):
 
     train_transform = transforms.Compose([
         transforms.RandomCrop(32, padding=4),
@@ -91,7 +91,7 @@ def cifar10_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2):
 
     return train_loader, val_loader, test_loader
 
-def cifar100_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2):
+def cifar100_dataloaders(batch_size=128, data_dir='/ssd1/chenwy/dataset', num_workers=2):
 
     train_transform = transforms.Compose([
         transforms.RandomCrop(32, padding=4),
@@ -118,7 +118,7 @@ def cifar100_dataloaders(batch_size=128, data_dir='/ssd1/chenwy', num_workers=2)
     return train_loader, val_loader, test_loader
 
 
-def cifar_c_testloader(corruption, level=-1, data_dir='/ssd1/chenwy', num_classes=10, test_batch_size=100, num_workers=2):
+def cifar_c_testloader(corruption, level=-1, data_dir='/ssd1/chenwy/dataset', num_classes=10, test_batch_size=100, num_workers=2):
     '''
     Returns:
         test_c_loader: corrupted testing set loader (original cifar10-C)
